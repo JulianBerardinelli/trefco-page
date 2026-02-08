@@ -1,0 +1,146 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Productos',
+  description: 'Alambres de cobre y aluminio, y cuerdas en 7 hilos con fabricación bajo normas IRAM.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Productos"
+    image={{
+      src: 'https://images.unsplash.com/photo-1581092918367-7d0a6b6fbf79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Bobinas de alambre industrial',
+    }}
+  >
+    <Fragment slot="title">Catálogo técnico de TREFCO</Fragment>
+    <Fragment slot="subtitle">
+      Alambres redondos de cobre y aluminio, más cuerdas en 7 hilos, elaborados con control dimensional y
+      físico–mecánico bajo normas IRAM.
+    </Fragment>
+  </Hero>
+
+  <!-- Features Widget *************** -->
+
+  <Features
+    id="cobre"
+    title="Alambres redondos de cobre"
+    subtitle="Disponibles en cobre reciclado y cobre electrolítico según especificación de uso."
+    columns={2}
+    items={[
+      {
+        title: 'Cobre reciclado',
+        description: 'Desde Ø 0.30 mm hasta Ø 5.00 mm.',
+        icon: 'tabler:recycle',
+      },
+      {
+        title: 'Cobre electrolítico',
+        description: 'Desde Ø 0.20 mm hasta Ø 1.80 mm.',
+        icon: 'tabler:bolt',
+      },
+      {
+        title: 'Aplicaciones',
+        description: 'Conductores eléctricos y electrónicos, soldadura y envases metálicos.',
+        icon: 'tabler:plug-connected',
+      },
+      {
+        title: 'Calidad',
+        description: 'Procesos alineados a normas IRAM y requisitos del cliente.',
+        icon: 'tabler:badge-check',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    id="aluminio"
+    isReversed
+    title="Alambres redondos de aluminio"
+    subtitle="Aluminio puro y aleado para múltiples usos industriales."
+    items={[
+      {
+        title: 'Diámetros disponibles',
+        description: 'Desde Ø 0.50 mm hasta Ø 5.20 mm.',
+      },
+      {
+        title: 'Usos principales',
+        description: 'Cierres para industria textil, amarres, ataduras y cercos eléctricos.',
+      },
+      {
+        title: 'Aluminio recocido',
+        description: 'Opciones para aplicaciones que requieren flexibilidad y resistencia.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+      alt: 'Alambre de aluminio en producción',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Aluminio puro / aleado</h3>
+      Producción con control dimensional y físico-mecánico, adaptable a exigencias específicas.
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-[#140f0c]/60"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    id="cuerdas"
+    title="Cuerdas en 7 hilos"
+    subtitle="Soluciones en cobre y aluminio para instalaciones eléctricas e industriales."
+    columns={2}
+    items={[
+      {
+        title: 'Cuerdas de cobre',
+        description: 'Ø 10 mm² a Ø 50 mm² en 7 hilos.',
+        icon: 'tabler:link',
+      },
+      {
+        title: 'Cuerdas de aluminio',
+        description: 'Ø 16 mm² a Ø 50 mm² en 7 hilos.',
+        icon: 'tabler:link',
+      },
+      {
+        title: 'Normas IRAM',
+        description: 'Características dimensionales y físico–mecánicas certificadas.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'Adaptabilidad',
+        description: 'Producción a medida según parámetros de exigencia de cada cliente.',
+        icon: 'tabler:adjustments',
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Solicitar información técnica',
+        href: '/contact',
+      },
+    ]}
+  >
+    <Fragment slot="title">¿Necesitás especificaciones a medida?</Fragment>
+    <Fragment slot="subtitle">
+      Contanos tu aplicación y te asesoramos sobre diámetros, normas y parámetros de calidad disponibles.
+    </Fragment>
+  </CallToAction>
+</Layout>
