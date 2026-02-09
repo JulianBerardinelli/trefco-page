@@ -26,9 +26,10 @@ const { title, subtitle, tagline, image, actions = [], cards = [] } = Astro.prop
 
 <section class="relative overflow-hidden not-prose">
   <div class="absolute inset-0 bg-[linear-gradient(135deg,_rgba(255,255,255,0.06)_0%,_rgba(12,10,9,0.9)_65%)]"></div>
+  <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[#0b0a09]"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-12 lg:pt-16 pb-10">
     <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-stretch">
-      <div class="text-left">
+      <div class="text-left intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter">
         {tagline && (
           <p class="text-sm uppercase tracking-[0.32em] text-secondary font-semibold mb-4">{tagline}</p>
         )}
@@ -43,7 +44,7 @@ const { title, subtitle, tagline, image, actions = [], cards = [] } = Astro.prop
         ) : null}
       </div>
       <div class="relative h-full">
-        <div class="hero-diagonal relative h-full min-h-[260px] sm:min-h-[320px] lg:min-h-[420px] rounded-3xl overflow-hidden">
+        <div class="hero-diagonal relative h-full min-h-[260px] sm:min-h-[320px] lg:min-h-[420px] rounded-3xl overflow-hidden intersect-once intersect-no-queue motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter">
           <Image
             {...image}
             class="h-full w-full object-cover"
@@ -58,7 +59,7 @@ const { title, subtitle, tagline, image, actions = [], cards = [] } = Astro.prop
     </div>
 
     {cards?.length ? (
-      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter">
         {cards.map((card, index) => (
           <div
             class:list={[
