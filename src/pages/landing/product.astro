@@ -7,6 +7,27 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 const metadata = {
   title: 'Product Details Landing Page Demo',
 };
+
+const products = [
+  {
+    title: 'Starter Boost',
+    description: 'Una suscripción perfecta para comenzar con una propuesta clara y medible.',
+    image:
+      'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    title: 'Growth Kit',
+    description: 'La combinación ideal de performance y automatización para escalar tu negocio.',
+    image:
+      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    title: 'Premium Suite',
+    description: 'Experiencia full con analítica avanzada, soporte dedicado y diseño premium.',
+    image:
+      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
+  },
+];
 ---
 
 <Layout metadata={metadata}>
@@ -25,6 +46,50 @@ const metadata = {
       alt: 'A spotlight on a product. Product Details Landing Page Demo',
     }}
   />
+
+  <section class="relative overflow-hidden bg-transparent py-16 sm:py-20">
+    <div class="absolute inset-0 -z-10 opacity-60">
+      <div class="absolute -left-24 top-10 h-56 w-56 rounded-full bg-primary-200/40 blur-3xl"></div>
+      <div class="absolute -right-10 bottom-10 h-60 w-60 rounded-full bg-secondary-200/30 blur-3xl"></div>
+    </div>
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <p class="text-sm uppercase tracking-[0.3em] text-primary-600">Productos destacados</p>
+        <h2 class="mt-4 text-3xl font-semibold text-slate-900 sm:text-4xl">
+          Suscripciones diseñadas para crecer contigo
+        </h2>
+        <p class="mt-4 text-base text-slate-600 sm:text-lg">
+          Elige el plan ideal y disfruta de un diseño elegante con detalles y animaciones sutiles.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-8 md:grid-cols-3">
+        {products.map((product) => (
+          <article class="group relative overflow-hidden rounded-3xl border border-slate-200/70 bg-white/80 shadow-lg shadow-slate-200/60 backdrop-blur transition duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img
+                src={product.image}
+                alt={`Imagen de ${product.title}`}
+                class="h-full w-full object-cover transition duration-500 ease-out group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-80 transition duration-500 group-hover:opacity-60"></div>
+            </div>
+            <div class="flex h-full flex-col gap-3 px-6 pb-8 pt-6">
+              <h3 class="text-xl font-semibold text-slate-900">{product.title}</h3>
+              <p class="text-sm text-slate-600">{product.description}</p>
+              <div class="mt-4 flex items-center gap-2 text-sm font-semibold text-primary-600">
+                Explorar plan
+                <span class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-primary-200 transition duration-300 group-hover:bg-primary-600 group-hover:text-white">
+                  →
+                </span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <CallToAction
     title="Coming soon"
