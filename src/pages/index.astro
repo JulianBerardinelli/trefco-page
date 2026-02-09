@@ -1,7 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
-import Hero2 from '~/components/widgets/Hero2.astro';
+import HeroTrefco from '~/components/widgets/HeroTrefco.astro';
 import Features from '~/components/widgets/Features.astro';
 import Content from '~/components/widgets/Content.astro';
 import Steps from '~/components/widgets/Steps.astro';
@@ -18,10 +18,12 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero2 Widget ******************* -->
+  <!-- Hero Widget ******************* -->
 
-  <Hero2
-    tagline="Industria metalúrgica · Avellaneda, Buenos Aires"
+  <HeroTrefco
+    tagline="Metalurgia no ferrosa · Avellaneda"
+    title="TREFCO: alambres, hilos y cuerdas de cobre y aluminio"
+    subtitle="Más de 25 años acompañando a la industria argentina con soluciones confiables, calidad IRAM y producción adaptable."
     actions={[
       { variant: 'primary', text: 'Ver productos', href: '/productos' },
       { variant: 'secondary', text: 'Contactanos', href: '/contact' },
@@ -30,17 +32,33 @@ const metadata = {
       src: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       alt: 'Producción metalúrgica en planta',
     }}
-  >
-    <Fragment slot="title">
-      TREFCO: alambres, hilos y cuerdas <br />
-      de <span class="text-accent dark:text-white">cobre y aluminio</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Más de 25 años acompañando a la industria argentina con soluciones en metales no ferrosos, calidad IRAM y una
-      producción adaptable a los requerimientos técnicos de cada cliente.
-    </Fragment>
-  </Hero2>
+    cards={[
+      {
+        number: '01',
+        title: 'Cobre reciclado',
+        description: 'Alambres Ø 0.30 mm a Ø 5.00 mm para usos industriales y eléctricos.',
+        href: '/productos#cobre',
+      },
+      {
+        number: '02',
+        title: 'Cobre electrolítico',
+        description: 'Diámetros Ø 0.20 mm a Ø 1.80 mm con alta conductividad.',
+        href: '/productos#cobre',
+      },
+      {
+        number: '03',
+        title: 'Aluminio puro y aleado',
+        description: 'Producción Ø 0.50 mm a Ø 5.20 mm para aplicaciones técnicas.',
+        href: '/productos#aluminio',
+      },
+      {
+        number: '04',
+        title: 'Cuerdas en 7 hilos',
+        description: 'Cobre Ø 10–50 mm² y aluminio Ø 16–50 mm².',
+        href: '/productos#cuerdas',
+      },
+    ]}
+  />
 
   <!-- Stats Widget ****************** -->
 

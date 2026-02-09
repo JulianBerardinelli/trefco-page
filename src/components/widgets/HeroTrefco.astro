@@ -1,0 +1,89 @@
+---
+import Image from '~/components/common/Image.astro';
+import Button from '~/components/ui/Button.astro';
+
+interface HeroCard {
+  number: string;
+  title: string;
+  description: string;
+  href?: string;
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  tagline?: string;
+  image: {
+    src: string;
+    alt: string;
+  };
+  actions?: Array<{ text: string; href: string; variant?: 'primary' | 'secondary' | 'tertiary' }>;
+  cards?: HeroCard[];
+}
+
+const { title, subtitle, tagline, image, actions = [], cards = [] } = Astro.props as Props;
+---
+
+<section class="relative overflow-hidden not-prose">
+  <div class="absolute inset-0 bg-[linear-gradient(135deg,_rgba(255,255,255,0.06)_0%,_rgba(12,10,9,0.9)_65%)]"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-12 lg:pt-16 pb-10">
+    <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-stretch">
+      <div class="text-left">
+        {tagline && (
+          <p class="text-sm uppercase tracking-[0.32em] text-secondary font-semibold mb-4">{tagline}</p>
+        )}
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">{title}</h1>
+        <p class="text-lg text-muted mb-8 max-w-xl">{subtitle}</p>
+        {actions?.length ? (
+          <div class="flex flex-wrap gap-3">
+            {actions.map((action) => (
+              <Button {...action} class="px-6 py-3" />
+            ))}
+          </div>
+        ) : null}
+      </div>
+      <div class="relative h-full">
+        <div class="hero-diagonal relative h-full min-h-[260px] sm:min-h-[320px] lg:min-h-[420px] rounded-3xl overflow-hidden">
+          <Image
+            {...image}
+            class="h-full w-full object-cover"
+            widths={[400, 768, 1024, 1600]}
+            sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, 1024px"
+            loading="eager"
+            width={900}
+            height={700}
+          />
+        </div>
+      </div>
+    </div>
+
+    {cards?.length ? (
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {cards.map((card, index) => (
+          <div
+            class:list={[
+              'rounded-2xl border border-white/10 bg-white/5 p-5 shadow-[0_12px_30px_rgba(0,0,0,0.25)] backdrop-blur',
+              index === 0 ? 'bg-white/10' : '',
+            ]}
+          >
+            <div class="text-3xl font-bold text-secondary">{card.number}</div>
+            <div class="mt-2 text-lg font-semibold text-white">{card.title}</div>
+            <p class="mt-2 text-sm text-muted">{card.description}</p>
+            {card.href ? (
+              <a class="mt-4 inline-flex items-center text-sm font-semibold text-secondary" href={card.href}>
+                Ver detalles
+                <span class="ml-2 inline-block">→</span>
+              </a>
+            ) : null}
+          </div>
+        ))}
+      </div>
+    ) : null}
+  </div>
+</section>
+
+<style>
+  .hero-diagonal {
+    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+  }
+</style>
